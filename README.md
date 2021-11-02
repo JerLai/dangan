@@ -1,3 +1,19 @@
+# Dangan - Twitter Clone Project
+
+The project aims to serve as a study on how one of the most prolific social media applications is created and operates, by recreating several of the core functionalities in different phases.
+
+Link to the build will update based on completed phases.
+
+https://dangan-5544a.web.app/
+
+## Phases:
+
+1. Twitter basics - **Completed**
+2. Page Navigation and Backend+REST API
+3. Users and Authentication
+4. Twitter features
+5. (tentative) Beyond
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
