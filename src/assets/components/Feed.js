@@ -1,18 +1,30 @@
-import React from 'react';
-
+import React, {useState, useEffect} from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 import TweetBox from './TweetBox.js';
 import Post from './Post.js';
 import "./Feed.css";
-import db from "./firebase.js";
+import db from "../../firebase.js";
+import FlipMove from 'react-flip-move';
+
 function Feed(props) {
-  const [posts, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
   let optionName = "Home"
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => (
-      setPosts(snapshot.docs.map(doc => doc.data()))
-    ))
-  }, []);
+    try {
+      const fetchTweets = async () => {
+        const postsCol = collection(db, 'posts');
+        const postSnapshot = await getDocs(postsCol);
+        const postList = postSnapshot.docs.map(doc => doc.data());
+        setPosts(postList);
+      }
+      fetchTweets();
+    } catch (e) {
+      console.error("Error fetching documents: ", e);
+    }
+
+  /*,[] is not working, TODO: figure out why tweets don't dynamically update in feed after tweet submission*/
+  });
   return (
     <div className="feed">
 
@@ -21,16 +33,20 @@ function Feed(props) {
       </div>
 
       <TweetBox/>
-      {posts.map((post) => (
-        <Post
-          displayName={post.displayName}
-          username={post.username}
-          verified={post.verified}
-          text={post.text}
-          avatar={post.avatar}
-          image={post.image}
-        />
-      ))}
+
+      <FlipMove>
+        {posts.map((post) => (
+          <Post/*TODO: change key to the document id corresponding to post*/
+            key = {post.text}
+            displayName={post.displayName}
+            username={post.username}
+            verified={post.verified}
+            text={post.text}
+            avatar={post.avatar}
+            image={post.image}
+          />
+        ))}
+      </FlipMove>
 
     </div>
   )

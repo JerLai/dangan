@@ -28,6 +28,7 @@ export default function SideBar(props) {
       return window.location.href.indexOf(routeName) > -1 ? true : false;
     }
 
+    //TODO: Add Links and Routes
     let sidebar = (
       <div>
         {/*<Button
