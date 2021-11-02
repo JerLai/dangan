@@ -23,8 +23,7 @@ function Feed(props) {
       console.error("Error fetching documents: ", e);
     }
 
-  /*,[] is not working, TODO: figure out why tweets don't dynamically update in feed after tweet submission*/
-  });
+  }, [posts]);
   return (
     <div className="feed">
 
