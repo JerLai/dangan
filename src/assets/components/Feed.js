@@ -18,12 +18,13 @@ function Feed(props) {
         const postList = postSnapshot.docs.map(doc => doc.data());
         setPosts(postList);
       }
+      console.log("In useEffect");
       fetchTweets();
     } catch (e) {
       console.error("Error fetching documents: ", e);
     }
 
-  }, [posts]);
+  }, []);
   return (
     <div className="feed">
 

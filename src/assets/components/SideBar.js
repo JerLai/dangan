@@ -30,13 +30,7 @@ export default function SideBar(props) {
 
     //TODO: Add Links and Routes
     let sidebar = (
-      <div>
-        {/*<Button
-          variant="contained"
-
-          startIcon={<img src={dangan}></img>}
-        />
-        */}
+      <div className ="sidebar">
         <TwitterIcon className="sidebar__twitterIcon" />
         <SideBarOption active Icon={HomeIcon} text="Home" />
         <SideBarOption Icon={SearchIcon} text="Explore" />
@@ -74,18 +68,6 @@ export default function SideBar(props) {
     );
     // returns the actual component itself
     return (
-      <div className="sidebar">
-      {/*}
-        <Drawer
-          anchor="left"
-          variant="permanent"
-          open={true}
-        >
-        */}
-          {sidebar}
-        {/*
-        </Drawer>
-        >*/}
-      </div>
+      sidebar
     );
 }
