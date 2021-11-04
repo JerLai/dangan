@@ -23,7 +23,7 @@ function Feed(props) {
       console.error("Error fetching documents: ", e);
     }
 
-  }, [posts]);
+  }, []);
   return (
     <div className="feed">
 
