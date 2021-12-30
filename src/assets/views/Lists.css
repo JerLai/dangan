@@ -1,0 +1,75 @@
+.lists {
+  display: flex;
+  flex: 0.7;
+  height: 100vh;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+}
+
+.lists__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  padding: 15px 20px;
+}
+
+.lists__box {
+  display: flex;
+  flex-direction: column;
+  flex: 0.6;
+  border-right: 1px solid var(--twitter-background);
+}
+
+.lists__pinned {
+  padding-top: 10px;
+  border-bottom: 1px solid var(--twitter-background);
+}
+
+.lists__pinned > h2 {
+  padding-left: 3%;
+}
+
+.lists__pinned > p {
+  padding-top: 10%;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.lists__discover {
+  padding-top: 10px;
+}
+
+.lists__discover {
+  padding-top: 10px;
+  border-bottom: 1px solid var(--twitter-background);
+}
+
+.lists__discover > h2 {
+  padding-left: 3%;
+}
+
+.lists__discover > p {
+  padding-top: 10%;
+  text-align: center;
+  padding-bottom: 3%;
+}
+
+.lists__yours {
+  padding-top: 10px;
+}
+
+.lists__yours {
+  padding-top: 10px;
+  border-bottom: 1px solid var(--twitter-background);
+}
+
+.lists__yours > h2 {
+  padding-left: 3%;
+}
+
+.lists__yours > p {
+  padding-top: 10%;
+  text-align: center;
+  padding-bottom: 3%;
+}

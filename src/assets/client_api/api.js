@@ -1,37 +1,55 @@
-let api = (function(){
-  "use strict";
-
-  /**********************************
-   * Send *
-   **********************************/
-
-  function send(method, url, data, callback) {
-    let xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-        if (xhr.status !== 200) callback("[" + xhr.status + "]" + xhr.responseText, null);
-        else callback(null, JSON.parse(xhr.responseText));
-    };
-    xhr.open(method, url, true);
-    if (!data) xhr.send();
-    else{
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.send(JSON.stringify(data));
-    }
-  }
-
-
+/*jshint esversion: 6 */
+export let api = (function(){
+  let module = {};
   /***********************************
    * Commands
    ***********************************/
 
+  module.ping = function() {
+    fetch("/ping")
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(resJson) {
+        console.log(resJson);
+      });
+  }
   /**
    * Send tweet
    */
   module.sendTweet = function(tweet) {
-    send("POST", "/api/tweet", tweet, function(err, res){
-      //if (err) return notifyErrorListeners(err);
-      //notifyUserListeners(getUsername());
- });
+    return fetch("/api/tweet/", {
+      method: 'POST',
+      body: JSON.stringify(tweet)
+    });
   }
+
+  module.getMessages = function(userID) {
+    return fetch("/api/messages/" + userID);
+  }
+
+  module.addMessage = function(message) {
+    return fetch("/api/messages/", {
+      method: 'POST',
+      body: JSON.stringify(message)
+    });
+  }
+
+  module.getBookMarks = function(userID) {
+    return fetch("/api/bookmarks/"+ userID);
+  }
+
+  module.profile = function (userID) {
+    return fetch("/api/profile/" + userID);
+  }
+
+  module.home = function() {
+    return fetch("/api/home/");
+  }
+
+  module.explore = function() {
+
+  }
+
   return module;
 })();

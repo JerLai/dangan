@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import "./TweetBox.css";
 import {Button, Avatar} from "@material-ui/core";
-import db from "../../firebase.js";
-import { collection, addDoc } from 'firebase/firestore';
+
+import {api} from "../client_api/api.js";
+
 
 function TweetBox(props) {
   const [tweetMessage, setTweetMessage] = useState("");
@@ -12,6 +13,7 @@ function TweetBox(props) {
     e.preventDefault();
     //TODO: change to have props send users info
     try {
+      /*
       const addTweet = async () => {
         const postsCol = collection(db, 'posts');
         const res = await addDoc(postsCol, {
@@ -26,6 +28,17 @@ function TweetBox(props) {
         setTweetImage("");
       }
       addTweet();
+      */
+      api.sendTweet({
+        displayName: "Kamito",
+        username: "Kamito12",
+        verified: true,
+        text: tweetMessage,
+        image: tweetImage,
+        avatar: "https://pbs.twimg.com/profile_images/644870914442596352/0IP4OU7f.jpg",
+      });
+      setTweetMessage("");
+      setTweetImage("");
     } catch (e) {
       console.error("Error adding document: ", e);
     }
