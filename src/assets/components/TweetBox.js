@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import "./TweetBox.css";
 import {Button, Avatar} from "@material-ui/core";
 
-import {api} from "../client_api/api.js";
+import api from "../client_api/api.js";
 
 
 function TweetBox(props) {
@@ -13,22 +13,6 @@ function TweetBox(props) {
     e.preventDefault();
     //TODO: change to have props send users info
     try {
-      /*
-      const addTweet = async () => {
-        const postsCol = collection(db, 'posts');
-        const res = await addDoc(postsCol, {
-          displayName: "Kamito",
-          username: "Kamito12",
-          verified: true,
-          text: tweetMessage,
-          image: tweetImage,
-          avatar: "https://pbs.twimg.com/profile_images/644870914442596352/0IP4OU7f.jpg",
-        });
-        setTweetMessage("");
-        setTweetImage("");
-      }
-      addTweet();
-      */
       api.sendTweet({
         displayName: "Kamito",
         username: "Kamito12",
@@ -40,7 +24,7 @@ function TweetBox(props) {
       setTweetMessage("");
       setTweetImage("");
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error("Error has occurred: ", e);
     }
 
   }

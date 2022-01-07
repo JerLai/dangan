@@ -2,7 +2,7 @@ import React from 'react'
 import "./Home.css";
 import Feed from '../components/Feed.js';
 import Widgets from '../components/Widgets.js';
-function home() {
+function Home() {
   return (
     <div className = "home">
       <Feed/>
@@ -11,4 +11,4 @@ function home() {
   )
 }
 
-export default home
+export default Home

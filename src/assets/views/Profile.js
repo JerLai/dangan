@@ -40,7 +40,7 @@ function Profile() {
             </Tabs>
         </Box>
         <div className="profile__content">
-          <p>Tweet retrieval in a later update!</p>
+          <p>Sample posts in later update!</p>
         </div>
       </div>
       <Widgets/>

@@ -11,6 +11,6 @@ const tweetSchema = new Schema({
   avatar: String,
 });
 
-const Tweet = mongoose.model("Tweet", tweetSchema);
+const Tweets = mongoose.model("Tweets", tweetSchema);
 
-module.exports = Tweet;
+module.exports = Tweets;

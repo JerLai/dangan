@@ -40,7 +40,7 @@ function Explore() {
             </Tabs>
         </Box>
         <div className="explore__content">
-          <p>None...yet!</p>
+          <p>Sample posts in later update!</p>
 
         </div>
       </div>

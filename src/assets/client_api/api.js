@@ -1,55 +1,41 @@
-/*jshint esversion: 6 */
-export let api = (function(){
-  let module = {};
-  /***********************************
-   * Commands
-   ***********************************/
-
-  module.ping = function() {
+module.exports = {
+  ping: () => {
     fetch("/ping")
       .then(function(res) {
         return res.json();
       })
       .then(function(resJson) {
-        console.log(resJson);
+        return resJson;
       });
-  }
-  /**
-   * Send tweet
-   */
-  module.sendTweet = function(tweet) {
+  },
+  sendTweet: (tweet) => {
     return fetch("/api/tweet/", {
       method: 'POST',
       body: JSON.stringify(tweet)
     });
-  }
-
-  module.getMessages = function(userID) {
+  },
+  getTweets: () => {
+    return fetch("/api/tweets/");
+  },
+  getMessages: (userID) => {
     return fetch("/api/messages/" + userID);
-  }
-
-  module.addMessage = function(message) {
+  },
+  addMessage: (message) => {
     return fetch("/api/messages/", {
       method: 'POST',
       body: JSON.stringify(message)
     });
-  }
-
-  module.getBookMarks = function(userID) {
+  },
+  getBookMarks: (userID) => {
     return fetch("/api/bookmarks/"+ userID);
-  }
-
-  module.profile = function (userID) {
+  },
+  profile: (userID) => {
     return fetch("/api/profile/" + userID);
-  }
-
-  module.home = function() {
+  },
+  home: () => {
     return fetch("/api/home/");
+  },
+  explore: () => {
+
   }
-
-  module.explore = function() {
-
-  }
-
-  return module;
-})();
+};
