@@ -18,9 +18,9 @@ const keys = require('./src/config/keys');
 const Tweets = require('./src/mongoose_models/TweetModel');
 
 //keys.mongodb.dbURI
-
+//process.env.MONGODB_URI
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(keys.mongodb.dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })

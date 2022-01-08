@@ -27,8 +27,10 @@ function Profile() {
       })
       .then(function(resJson) {
         setPosts(resJson);
+      })
+      .catch(function(error) {
+        console.error(error);
       });
-
   }, []);
 
   return (
