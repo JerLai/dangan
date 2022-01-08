@@ -9,19 +9,6 @@ function Feed(props) {
   let optionName = "Home"
 
   useEffect(() => {
-<<<<<<< HEAD
-    try {
-      const fetchTweets = async () => {
-        const postsCol = collection(db, 'posts');
-        const postSnapshot = await getDocs(postsCol);
-        const postList = postSnapshot.docs.map(doc => doc.data());
-        setPosts(postList);
-      }
-      fetchTweets();
-    } catch (e) {
-      console.error("Error fetching documents: ", e);
-    }
-=======
     let tweets = api.getTweets()
       .then(function(res) {
         return res.json();
@@ -29,7 +16,6 @@ function Feed(props) {
       .then(function(resJson) {
         setPosts(resJson);
       });
->>>>>>> nav_rest
 
   }, []);
   return (
