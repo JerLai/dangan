@@ -15,7 +15,10 @@ function Feed(props) {
       })
       .then(function(resJson) {
         setPosts(resJson);
-      });
+      })
+      .catch(function(error) {
+        console.error(error);
+      })
 
   }, []);
   return (
