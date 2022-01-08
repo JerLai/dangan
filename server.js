@@ -17,8 +17,10 @@ mongoose.Promise = global.Promise;
 const keys = require('./src/config/keys');
 const Tweets = require('./src/mongoose_models/TweetModel');
 
+//keys.mongodb.dbURI
+
 mongoose
-  .connect(keys.mongodb.dbURI, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
