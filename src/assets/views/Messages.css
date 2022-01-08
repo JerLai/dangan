@@ -1,0 +1,62 @@
+.messages {
+  display: flex;
+  flex: 0.8;
+  height: 100vh;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+}
+
+.messages__list {
+  display: flex;
+  flex-direction: column;
+  flex:0.4;
+}
+
+.messages__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid var(--twitter-background);
+  z-index: 100;
+  padding: 15px 20px;
+}
+
+.messages__none {
+  display: flex;
+  flex-direction: column;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.messages__current__start {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+}
+
+.messages__current {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--twitter-background);
+  padding-left: 10%;
+  padding-right: 10%;
+  flex: 0.6;
+}
+
+.messages__current > h1{
+  padding-top: 50%;
+}
+.messages__current__new {
+  background-color: var(--twitter-color) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 900 !important;
+  text-transform: inherit !important;
+  border-radius: 30px !important;
+  height: 50px !important;
+  margin-top: 20px !important;
+}

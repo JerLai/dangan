@@ -1,0 +1,33 @@
+.explore {
+  display: flex;
+  flex: 0.7;
+  height: 100vh;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+}
+
+.explore__box {
+  border-right: 1px solid var(--twitter-background);
+}
+.explore__header {
+  display: flex;
+  align-items: center;
+  background-color: var(--twitter-background);
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.explore__header > input {
+  border: none;
+  background-color: var(--twitter-background);
+}
+.explore__searchIcon {
+  color: gray;
+}
+
+.explore__content > p {
+  padding-top: 5%;
+  text-align: center;
+}
