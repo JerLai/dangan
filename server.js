@@ -20,7 +20,7 @@ const Tweets = require('./src/mongoose_models/TweetModel');
 //keys.mongodb.dbURI
 //process.env.MONGODB_URI
 mongoose
-  .connect(keys.mongodb.dbURI, {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
