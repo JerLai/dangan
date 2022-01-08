@@ -1,15 +1,19 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
 import "./Notifications.css";
+import Post from '../components/Post.js';
+import FlipMove from 'react-flip-move';
+import api from "../client_api/api.js";
 
 import Widgets from "../components/Widgets.js";
 function Notifications() {
 
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
+  const [posts, setPosts] = useState([]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -18,6 +22,17 @@ function Notifications() {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
+
+  useEffect(() => {
+    let tweets = api.getTweets()
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(resJson) {
+        setPosts(resJson);
+      });
+
+  }, []);
 
   return (
     <div className="notifications">
@@ -37,8 +52,19 @@ function Notifications() {
             </Tabs>
         </Box>
         <div className="notifications__content">
-          <p>None...yet!</p>
-
+          <FlipMove>
+            {posts.map((post) => (
+              <Post/*TODO: change key to the document id corresponding to post*/
+                key = {post._id}
+                displayName={post.displayName}
+                username={post.username}
+                verified={post.verified}
+                text={post.text}
+                avatar={post.avatar}
+                image={post.image}
+              />
+            ))}
+          </FlipMove>
         </div>
       </div>
       <Widgets/>

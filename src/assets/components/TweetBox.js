@@ -20,9 +20,19 @@ function TweetBox(props) {
         text: tweetMessage,
         image: tweetImage,
         avatar: "https://pbs.twimg.com/profile_images/644870914442596352/0IP4OU7f.jpg",
+      })
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(resJson) {
+        console.log(resJson);
+        setTweetMessage("");
+        setTweetImage("");
+      })
+      .catch(function(error) { 
+        console.error(error);
       });
-      setTweetMessage("");
-      setTweetImage("");
+
     } catch (e) {
       console.error("Error has occurred: ", e);
     }

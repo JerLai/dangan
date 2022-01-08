@@ -23,7 +23,7 @@ mongoose
     useUnifiedTopology: true
   })
   .then(() => {
-    console.log("Connected to the database!")
+    console.log("Connected to the database!");
   })
   .catch(err => {
     console.log("Cannot connect to the database!", err);
@@ -52,7 +52,7 @@ app.post("/api/tweet", function (req, res) {
 });
 
 app.get('/api/tweets', function (req, res) {
-  Tweets.find({}).limit(10)
+  Tweets.find({})//.limit(10)
     .then(data => {
       res.send(data);
     })
