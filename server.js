@@ -20,7 +20,7 @@ const Tweets = require('./src/mongoose_models/TweetModel');
 //keys.mongodb.dbURI
 //process.env.MONGODB_URI
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(process.env.MONGODB_URI || keys.mongodb.dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
@@ -37,7 +37,7 @@ mongoose
  *****************/
 // app
 const app = express();
-const PORT = 8080;
+const PORT = 5000;
 let server = http.createServer(app);
 
 app.use(express.json());
