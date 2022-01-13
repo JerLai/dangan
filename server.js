@@ -76,5 +76,5 @@ app.get('*',function (req, res) {
 
 server.listen(process.env.PORT || devPORT, '0.0.0.0', function (err) {
   if (err) console.log(err);
-  else console.log("HTTP server on http://localhost:%s", PORT);
+  else console.log("HTTP server on http://localhost:%s", devPORT);
 });
