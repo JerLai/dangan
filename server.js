@@ -37,7 +37,7 @@ mongoose
  *****************/
 // app
 const app = express();
-const PORT = 5000;
+const devPORT = 5000;
 let server = http.createServer(app);
 
 app.use(express.json());
@@ -74,7 +74,7 @@ app.get('*',function (req, res) {
   res.redirect('/');
 });
 
-server.listen(PORT, function (err) {
+server.listen(process.env.PORT || devPORT, '0.0.0.0', function (err) {
   if (err) console.log(err);
   else console.log("HTTP server on http://localhost:%s", PORT);
 });
