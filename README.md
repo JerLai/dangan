@@ -9,7 +9,7 @@ https://dangan-5544a.web.app/
 ## Phases:
 
 1. Twitter basics - **Completed**
-2. Page Navigation and Backend+REST API
+2. Page Navigation and Backend+REST API **Completed 2022-01-08**
 3. Users and Authentication
 4. Twitter features
 5. (tentative) Beyond
@@ -24,7 +24,12 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode.\
+Runs the server for the app.\
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+### `yarn start-client`
+
+Runs the front-end app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\

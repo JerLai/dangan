@@ -1,14 +1,11 @@
 import './App.css';
 import SideBar from './assets/components/SideBar.js';
 import options from "./assets/options.js"
-import Feed from './assets/components/Feed.js';
-import Widgets from './assets/components/Widgets.js';
-import Home from "./assets/views/Home.js";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Navigate
 } from "react-router-dom";
 
 function App() {
@@ -18,7 +15,6 @@ function App() {
       <Router>
       {/* Sidebar */}
         <SideBar routes = {options}/>
-      {/* TODO: adding Routing here for what to display*/}
         <Routes>
           {options.map((option, index) => (
             <Route
@@ -27,11 +23,11 @@ function App() {
               element={<option.component/>} // you sneaky router thing, needing angle brackets
             />
           ))}
+          <Route
+            path="/"
+            element={<Navigate to="/home"/>}
+          />
         </Routes>
-      {/* Feed including home */}
-      {/*<Feed/>*/}
-      {/* Widgets */}
-      {/*<Widgets/>*/}
       </Router>
     </div>
   );
