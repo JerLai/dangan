@@ -4,7 +4,7 @@ The project aims to serve as a study on how one of the most prolific social medi
 
 Link to the build will update based on completed phases.
 
-https://dangan-5544a.web.app/
+https://dangan-twitter-clone.herokuapp.com/
 
 ## Phases:
 
