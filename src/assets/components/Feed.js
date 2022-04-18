@@ -10,8 +10,10 @@ import { useRecoilValue} from "recoil";
 
 function Feed(props) {
   const [posts, setPosts] = useState([]);
+
   let optionName = "Home"
   const auth = useRecoilValue(authAtom);
+  
   useEffect(() => {
     let tweets = api.getTweets(auth.username)
       .then(function(res) {

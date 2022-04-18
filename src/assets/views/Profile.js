@@ -9,19 +9,22 @@ import Post from '../components/Post.js';
 import FlipMove from 'react-flip-move';
 import api from "../client_api/api.js";
 
+import { authAtom } from "../_state/auth.js";
+import { useRecoilValue} from "recoil";
+
 function Profile() {
   const [value, setValue] = useState(0);
   const [posts, setPosts] = useState([]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const auth = useRecoilValue(authAtom);
   const handleChangeIndex = (index) => {
     setValue(index);
   };
 
   useEffect(() => {
-    let tweets = api.getTweets()
+    let tweets = api.getTweets(auth.username)
       .then(function(res) {
         return res.json();
       })
@@ -40,8 +43,8 @@ function Profile() {
           <Avatar
             src="https://pbs.twimg.com/profile_images/644870914442596352/0IP4OU7f.jpg"
           />
-          <h3>Kamitokun</h3>
-          <p>Placeholder profile :)</p>
+          <h3>{auth.displayName}</h3>
+          <p>{auth.username}</p>
 
         </div>
         <Box sx={{ bgcolor: 'background.paper', width: 700 }}>
@@ -61,11 +64,11 @@ function Profile() {
             {posts.map((post) => (
               <Post/*TODO: change key to the document id corresponding to post*/
                 key = {post._id}
-                displayName={post.displayName}
-                username={post.username}
-                verified={post.verified}
+                displayName={auth.displayName}
+                username={auth.username}
+                verified={auth.verified}
                 text={post.text}
-                avatar={post.avatar}
+                avatar={auth.avatar}
                 image={post.image}
               />
             ))}
