@@ -4,12 +4,16 @@ import Post from './Post.js';
 import "./Feed.css";
 import FlipMove from 'react-flip-move';
 import api from "../client_api/api.js";
+
+import { authAtom } from "../_state/auth.js";
+import { useRecoilValue} from "recoil";
+
 function Feed(props) {
   const [posts, setPosts] = useState([]);
   let optionName = "Home"
-
+  const auth = useRecoilValue(authAtom);
   useEffect(() => {
-    let tweets = api.getTweets()
+    let tweets = api.getTweets(auth.username)
       .then(function(res) {
         return res.json();
       })
@@ -32,13 +36,13 @@ function Feed(props) {
 
       <FlipMove>
         {posts.map((post) => (
-          <Post/*TODO: change key to the document id corresponding to post*/
+          <Post
             key = {post._id}
-            displayName={post.displayName}
-            username={post.username}
-            verified={post.verified}
+            displayName={auth.displayName}
+            username={auth.username}
+            verified={auth.verified}
             text={post.text}
-            avatar={post.avatar}
+            avatar={auth.avatar}
             image={post.image}
           />
         ))}

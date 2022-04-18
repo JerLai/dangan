@@ -17,8 +17,8 @@ module.exports = {
       body: JSON.stringify(tweet)
     });
   },
-  getTweets: () => {
-    return fetch("/api/tweets/");
+  getTweets: (userId) => {
+    return fetch("/api/tweets/" + userId);
   },
   getMessages: (userID) => {
     return fetch("/api/messages/" + userID);
@@ -37,6 +37,9 @@ module.exports = {
   },
   home: () => {
     return fetch("/api/home/");
+  },
+  userRefresh: () => {
+    return fetch("api/userRefresh");
   },
   explore: () => {
 

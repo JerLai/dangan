@@ -1,0 +1,7 @@
+.login {
+  display: flex;
+  flex: 0.7;
+  height: 100vh;
+  border-right: 1px solid var(--twitter-background);
+  min-width: fit-content;
+}

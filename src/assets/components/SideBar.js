@@ -1,5 +1,5 @@
 import React from 'react';
-//import { Link } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 import SideBarOption from "./SideBarOption.js";
 import "./SideBar.css"
@@ -7,20 +7,37 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 
 import TwitterIcon from "@material-ui/icons/Twitter";
-import { Button, SvgIcon } from "@material-ui/core";
-
-import dangan from "../dangan.svg";
-
+import { GoogleLogout } from "react-google-login";
+import { useResetRecoilState } from "recoil";
+import { authAtom } from "../_state/auth.js";
+const CLIENT_ID =
+  "156963401870-aq0atbcisuui6pqgcki6ap1tk3unqj6n.apps.googleusercontent.com";
 export default function SideBar(props) {
     // Styling for this SideBar component
     //color, logo, image, logoText, 
     const {routes} = props;
     const [activeTabIndex, setIndex] = React.useState();
+    const navigate = useNavigate();
     function activeRoute(routeName) {
       return window.location.href.indexOf(routeName) > -1 ? true : false;
     }
+    const resetAuth = useResetRecoilState(authAtom);
+    const handleLogout = () => {
+      fetch("/api/v1/auth/signout")
+      .then(function(res) {
+        return res.json();
+      })
+      .then(function(resJson) {
+        localStorage.removeItem("user");
+        resetAuth();
+        console.log(resJson);
+        navigate("/login", {replace: true});
+      })
+      .catch(function(error) {
+        console.error(error);
+      });
+    };
 
-    //TODO: Add Links and Routes
     let sidebar = (
       <div className ="sidebar">
       <List>
@@ -37,9 +54,12 @@ export default function SideBar(props) {
             </ListItem>
           );
         })}
-        <Button variant="outlined" className="sidebar__tweet" fullWidth>
-          Tweet
-        </Button>
+        <GoogleLogout
+          clientId={CLIENT_ID}
+          buttonText="Log Out with Google"
+          onLogoutSuccess={handleLogout}
+          onFailure={handleLogout}
+        />
       </List>
       </div>
 

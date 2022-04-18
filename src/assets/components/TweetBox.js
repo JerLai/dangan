@@ -3,23 +3,24 @@ import "./TweetBox.css";
 import {Button, Avatar} from "@material-ui/core";
 
 import api from "../client_api/api.js";
-
+import { authAtom } from "../_state/auth.js";
+import { useRecoilValue} from "recoil";
 
 function TweetBox(props) {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
 
+  const auth = useRecoilValue(authAtom);
   const sendTweet = (e) => {
     e.preventDefault();
-    //TODO: change to have props send users info
     try {
       api.sendTweet({
-        displayName: "Kamito",
-        username: "Kamito12",
-        verified: true,
+        displayName: auth.displayName,
+        username: auth.username,
+        verified: auth.verified,
         text: tweetMessage,
         image: tweetImage,
-        avatar: "https://pbs.twimg.com/profile_images/644870914442596352/0IP4OU7f.jpg",
+        avatar: auth.avatar,
       })
       .then(function(res) {
         return res.json();
@@ -43,7 +44,7 @@ function TweetBox(props) {
     <div className="tweetBox">
       <form>
         <div className="tweetBox__input">
-          <Avatar src="https://pbs.twimg.com/profile_images/644870914442596352/0IP4OU7f.jpg"/>
+          <Avatar src= {auth.avatar}/>
           <input
             onChange={(e) => setTweetMessage(e.target.value)}
             value={tweetMessage}

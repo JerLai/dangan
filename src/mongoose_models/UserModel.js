@@ -2,18 +2,17 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const tweetSchema = new Schema(
+const userSchema = new Schema(
   {
     displayName: String,
     username: String,
     verified: Boolean,
-    text: String,
-    image: String,
     avatar: String,
+    email: String,
   },
-  { timestamps: true }
+  { timestamps: true}
 );
 
-const Tweets = mongoose.model("Tweets", tweetSchema);
+const Users = mongoose.model("Users", userSchema);
 
-module.exports = Tweets;
+module.exports = Users;

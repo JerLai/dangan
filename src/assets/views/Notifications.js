@@ -10,11 +10,16 @@ import FlipMove from 'react-flip-move';
 import api from "../client_api/api.js";
 
 import Widgets from "../components/Widgets.js";
+
+import { authAtom } from "../_state/auth.js";
+import { useRecoilValue} from "recoil";
+
 function Notifications() {
 
   const [value, setValue] = useState(0);
   const [posts, setPosts] = useState([]);
 
+  const auth = useRecoilValue(authAtom);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -24,7 +29,7 @@ function Notifications() {
   };
 
   useEffect(() => {
-    let tweets = api.getTweets()
+    let tweets = api.getTweets(auth.username)
       .then(function(res) {
         return res.json();
       })
@@ -56,13 +61,13 @@ function Notifications() {
         <div className="notifications__content">
           <FlipMove>
             {posts.map((post) => (
-              <Post/*TODO: change key to the document id corresponding to post*/
+              <Post
                 key = {post._id}
-                displayName={post.displayName}
-                username={post.username}
-                verified={post.verified}
+                displayName={auth.displayName}
+                username={auth.username}
+                verified={auth.verified}
                 text={post.text}
-                avatar={post.avatar}
+                avatar={auth.avatar}
                 image={post.image}
               />
             ))}
