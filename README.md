@@ -10,7 +10,7 @@ https://dangan-twitter-clone.herokuapp.com/
 
 1. Twitter basics - **Completed**
 2. Page Navigation and Backend+REST API **Completed 2022-01-08**
-3. Users and Authentication
+3. Users and Authentication **Completed 2022-04-12**
 4. Twitter features
 5. (tentative) Beyond
 
